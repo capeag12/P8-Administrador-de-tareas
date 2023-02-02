@@ -3,6 +3,7 @@ using PropertyChanged;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,7 +25,7 @@ namespace P8_Administrador_de_tareas.MVVM.ViewModel
             };
         }
 
-        public ObservableCollection<Categoria> ListaCategorias { get { return listaCategorias; } set { } }
+        public ObservableCollection<Categoria> ListaCategorias { get { return listaCategorias; } set { this.listaCategorias = value; } }
         public ObservableCollection<Tarea> ListaTareas { get {
                 ObservableCollection<Tarea> listaTarea = new ObservableCollection<Tarea>();
                 foreach (var cat in listaCategorias)
@@ -36,7 +37,18 @@ namespace P8_Administrador_de_tareas.MVVM.ViewModel
                 }
 
                 return listaTarea; 
-            } set { } }
+            } set {
+                ObservableCollection<Tarea> listaTarea = new ObservableCollection<Tarea>();
+                foreach (var cat in listaCategorias)
+                {
+                    foreach (var item in cat.ListaTareas)
+                    {
+                        listaTarea.Add(item);
+                    }
+                }
+                this.ListaTareas = listaTarea;
+            } }
 
+        
     }
 }
