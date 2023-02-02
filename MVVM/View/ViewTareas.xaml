@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="P8_Administrador_de_tareas.MVVM.View.ViewTareas"
+             Title="ViewTareas">
+    <Grid RowDefinitions="2*,2*, 6*">
+        <VerticalStackLayout Grid.Row="0">
+            <Label Margin="10,0,0,0" Text="Mis tareas" FontSize="20"/>
+            <Label Margin="10,0,0,0" HorizontalOptions="Start" Text="Categorias" FontSize="20"/>
+        </VerticalStackLayout>
+        <CollectionView Grid.Row="1" ItemsSource="{Binding ListaCategorias}" ItemTemplate="{StaticResource Key=TemplateCat}">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Horizontal"></LinearItemsLayout>
+            </CollectionView.ItemsLayout>
+        </CollectionView>
+        <CollectionView Grid.Row="2" ItemsSource="{Binding ListaTareas}" ItemTemplate="{StaticResource Key=TemplateTarea}">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Vertical"></LinearItemsLayout>
+            </CollectionView.ItemsLayout>
+            <CollectionView.Header>
+                <Label Margin="10,0,0,0" HorizontalOptions="Start" Text="Categorias" FontSize="Subtitle"/>
+            </CollectionView.Header>
+        </CollectionView>
+    </Grid>
+</ContentPage>

@@ -1,0 +1,18 @@
+using P8_Administrador_de_tareas.MVVM.Modelo;
+using P8_Administrador_de_tareas.MVVM.ViewModel;
+using PropertyChanged;
+
+namespace P8_Administrador_de_tareas.MVVM.View;
+[AddINotifyPropertyChangedInterface]
+public partial class ViewTareas : ContentPage
+{
+	private TareasVM tareasVM;
+	
+	public ViewTareas()
+	{
+		InitializeComponent();
+		this.tareasVM = new TareasVM();
+		BindingContext= this.tareasVM;
+		
+	}
+}

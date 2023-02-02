@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xaml-comp compile="true" ?>
+<ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             >
+    <DataTemplate x:Key="TemplateCat">
+        <Border Margin="20,0,0,0" StrokeThickness="1">
+            <Border.StrokeShape >
+                <RoundRectangle CornerRadius="20,20,20,20"></RoundRectangle>
+            </Border.StrokeShape>
+            <Grid Padding="8" >
+                <VerticalStackLayout>
+                    <Label Text="{Binding TareasTotales, StringFormat='{0} Tareas'}" TextColor="Grey"/>
+                    <Label HorizontalOptions="StartAndExpand" Text="{Binding NombreCategoria}" FontSize="20" FontAttributes="Bold"/>
+                    <ProgressBar IsEnabled="False" Progress="{Binding PorcentajeCompletado}" ProgressColor="Orange"></ProgressBar>
+                </VerticalStackLayout>
+            </Grid>
+        </Border>
+        
+        
+    </DataTemplate>
+
+    <DataTemplate x:Key="TemplateTarea">
+        <HorizontalStackLayout Padding="10">
+            <CheckBox IsChecked="{Binding Completada}" VerticalOptions="Center"/>
+            <Label Text="{Binding TextTarea}" VerticalOptions="Center"/>
+        </HorizontalStackLayout>
+    </DataTemplate>
+
+</ResourceDictionary>
