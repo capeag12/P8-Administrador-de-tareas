@@ -10,7 +10,7 @@
             </Border.StrokeShape>
             <Grid Padding="8" >
                 <VerticalStackLayout>
-                    <Label Text="{Binding TareasTotales, StringFormat='{0} Tareas'}" TextColor="Grey"/>
+                    <Label Text="{Binding TareasRestantes, StringFormat='{0} Tareas'}" TextColor="Grey"/>
                     <Label HorizontalOptions="StartAndExpand" Text="{Binding NombreCategoria}" FontSize="20" FontAttributes="Bold"/>
                     <ProgressBar IsEnabled="False" Progress="{Binding PorcentajeCompletado}" ProgressColor="Orange"></ProgressBar>
                 </VerticalStackLayout>

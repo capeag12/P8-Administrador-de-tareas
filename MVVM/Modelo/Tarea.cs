@@ -12,29 +12,17 @@ namespace P8_Administrador_de_tareas.MVVM.Modelo
     [AddINotifyPropertyChangedInterface]
     class Tarea
     {
-        public string textTarea;
-        public bool completada;
+        public string TextTarea { get; set; }
 
-        public string TextTarea { get { return textTarea; } set { textTarea = value; } }
-
-        
-        public bool Completada { get { return completada; } 
-            set 
-            { 
-                completada = value;
-            } }
+        public bool Completada { get; set;}
         public Tarea(string tarea)
         {
-            this.textTarea = tarea;
-            completada = false;
+            this.TextTarea = tarea;
+            Completada = false;
             
         }
 
-        void completarTarea()
-        {
-            this.completada= true;
-            
-        }
+        
 
     }
 }

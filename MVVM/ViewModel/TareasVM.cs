@@ -10,25 +10,23 @@ using System.Threading.Tasks;
 
 namespace P8_Administrador_de_tareas.MVVM.ViewModel
 {
-    [AddINotifyPropertyChangedInterface]
     class TareasVM
     {
-        private ObservableCollection<Categoria> listaCategorias;
-        private ObservableCollection<Tarea> tareas;
-
         public TareasVM()
         {
-            this.listaCategorias= new ObservableCollection<Categoria>() {
+            this.ListaCategorias= new ObservableCollection<Categoria>() {
                 new Categoria("Categoria 1", new ObservableCollection<Tarea>() { new Tarea("Tarea 1")}) ,
                 new Categoria("Categoria 2", new ObservableCollection<Tarea>() { new Tarea("Tarea 2")}) ,
 
             };
         }
+        [AlsoNotifyFor("ListaTareas")]
+        public ObservableCollection<Categoria> ListaCategorias { get; set; }
 
-        public ObservableCollection<Categoria> ListaCategorias { get { return listaCategorias; } set { this.listaCategorias = value; } }
+
         public ObservableCollection<Tarea> ListaTareas { get {
                 ObservableCollection<Tarea> listaTarea = new ObservableCollection<Tarea>();
-                foreach (var cat in listaCategorias)
+                foreach (var cat in ListaCategorias)
                 {
                     foreach (var item in cat.ListaTareas)
                     {
@@ -39,7 +37,7 @@ namespace P8_Administrador_de_tareas.MVVM.ViewModel
                 return listaTarea; 
             } set {
                 ObservableCollection<Tarea> listaTarea = new ObservableCollection<Tarea>();
-                foreach (var cat in listaCategorias)
+                foreach (var cat in ListaCategorias)
                 {
                     foreach (var item in cat.ListaTareas)
                     {

@@ -12,28 +12,30 @@ namespace P8_Administrador_de_tareas.MVVM.Modelo
     [AddINotifyPropertyChangedInterface]
     class Categoria
     {
-        private string nombreCategoria;
-        private ObservableCollection<Tarea> listaTareas;
+        public string NombreCategoria { get; set; }
 
-        public int TareasCompletadas { get { return listaTareas.Where(t => t.Completada == true).Count(); } set {this.TareasCompletadas = listaTareas.Where(t => t.Completada == true).Count(); } }
+        [AlsoNotifyFor("TareasTotales", "PorcentajeCompletado", "TareasRestantes","TareasCompletadas")]
+        public ObservableCollection<Tarea> ListaTareas { get; set; }
 
-        public int TareasTotales { get { return this.listaTareas.Count; } set { this.TareasTotales = listaTareas.Count; } }
+        [AlsoNotifyFor("TareasTotales", "PorcentajeCompletado")]
+        public int TareasCompletadas { get { return ListaTareas.Where(t => t.Completada == true).Count(); } set { this.TareasCompletadas = ListaTareas.Where(t => t.Completada == true).Count(); } }
+
+        public int TareasTotales { get { return this.ListaTareas.Count; } set { this.TareasTotales = ListaTareas.Count; } }
+
+        public int TareasRestantes { get { return this.TareasTotales - this.TareasCompletadas; } set { this.TareasRestantes = this.TareasTotales - this.TareasCompletadas; } }
 
         public Categoria(string nombreCategoria, ObservableCollection<Tarea> listaTareas)
         {
-            this.nombreCategoria = nombreCategoria;
-            this.listaTareas = listaTareas;
-            
-          
-        }
+        this.NombreCategoria = nombreCategoria;
+        this.ListaTareas = listaTareas;
 
-        public double PorcentajeCompletado { get { return TareasCompletadas/TareasTotales; } set { this.PorcentajeCompletado = TareasCompletadas / TareasTotales; } }
 
-        public string NombreCategoria { get { return nombreCategoria; } set { } }
-
-        [AlsoNotifyFor("TareasTotales", "TareasCompletadas", "PorcentajeCompletado")]
-        public ObservableCollection<Tarea> ListaTareas { get { return listaTareas; } set{ 
-                ; 
-            } }
     }
+    public double PorcentajeCompletado { get { return (TareasCompletadas / TareasTotales); } set { this.PorcentajeCompletado = (TareasCompletadas / TareasTotales); } }
+
+
+
 }
+        
+    }
+

@@ -14,4 +14,10 @@ public partial class ViewTareas : ContentPage
 		BindingContext= this.tareasVM;
 		
 	}
+
+    private void Button_Clicked(object sender, EventArgs e)
+    {
+		Console.WriteLine();
+        BindingContext = this.tareasVM;
+    }
 }
