@@ -21,6 +21,5 @@
                 <Label Margin="10,0,0,0" HorizontalOptions="Start" Text="Categorias" FontSize="Subtitle"/>
             </CollectionView.Header>
         </CollectionView>
-        <Button Text="Comprobar estado" Clicked="Button_Clicked"/>
     </Grid>
 </ContentPage>

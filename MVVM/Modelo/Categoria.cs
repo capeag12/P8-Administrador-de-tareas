@@ -12,30 +12,67 @@ namespace P8_Administrador_de_tareas.MVVM.Modelo
     [AddINotifyPropertyChangedInterface]
     class Categoria
     {
+        private ObservableCollection<Tarea> listaTareas;
         public string NombreCategoria { get; set; }
 
-        [AlsoNotifyFor("TareasTotales", "PorcentajeCompletado", "TareasRestantes","TareasCompletadas")]
-        public ObservableCollection<Tarea> ListaTareas { get; set; }
+        private int tareasTotales;
+        private int tareasRestantes;
+        private int tareasCompletadas;
+        private double porcentajeCompletadas;
 
-        [AlsoNotifyFor("TareasTotales", "PorcentajeCompletado")]
-        public int TareasCompletadas { get { return ListaTareas.Where(t => t.Completada == true).Count(); } set { this.TareasCompletadas = ListaTareas.Where(t => t.Completada == true).Count(); } }
 
-        public int TareasTotales { get { return this.ListaTareas.Count; } set { this.TareasTotales = ListaTareas.Count; } }
-
-        public int TareasRestantes { get { return this.TareasTotales - this.TareasCompletadas; } set { this.TareasRestantes = this.TareasTotales - this.TareasCompletadas; } }
+        public ObservableCollection<Tarea> ListaTareas { get { return listaTareas; } set { this.listaTareas = value;
+                obtenerTareasTotales();
+                obtenerTareasRestantes();
+                obtenerTareasCompletadas();
+                obtenerPorcentajeCompletadas();
+            } }
 
         public Categoria(string nombreCategoria, ObservableCollection<Tarea> listaTareas)
         {
-        this.NombreCategoria = nombreCategoria;
-        this.ListaTareas = listaTareas;
+            this.listaTareas = listaTareas;
+            NombreCategoria = nombreCategoria;
+            this.tareasTotales= 0;
+            this.tareasRestantes= 0;
+            this.tareasCompletadas= 0;
+            this.porcentajeCompletadas= 0;
+            obtenerTareasTotales();
+            obtenerTareasRestantes();
+            obtenerTareasCompletadas();
+            obtenerPorcentajeCompletadas();
+            
+        }
+
+        void obtenerTareasTotales()
+        {
+            this.TareasTotales = listaTareas.Count;
+            
+        }
+
+        void obtenerTareasRestantes()
+        {
+            this.TareasRestantes= listaTareas.Where(l => l.Completada==false).Count();
+        }
+
+        void obtenerTareasCompletadas()
+        {
+            this.TareasCompletadas = listaTareas.Where(l=>l.Completada = true).Count();
+        }
+
+        void obtenerPorcentajeCompletadas()
+        {
+            this.PorcentajeCompletadas = tareasCompletadas / tareasTotales;
+        }
+
+        public int TareasTotales { get { return tareasTotales; } set { tareasTotales = value; } }
+
+        public int TareasRestantes { get { return tareasRestantes; } set { tareasRestantes= value; } }
+
+        public int TareasCompletadas { get { return tareasCompletadas;} set { tareasCompletadas = value; } }
+
+        public double PorcentajeCompletadas { get { return porcentajeCompletadas;} set { porcentajeCompletadas= value; } }
 
 
-    }
-    public double PorcentajeCompletado { get { return (TareasCompletadas / TareasTotales); } set { this.PorcentajeCompletado = (TareasCompletadas / TareasTotales); } }
-
-
-
+    }    
 }
-        
-    }
 

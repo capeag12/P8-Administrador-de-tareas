@@ -12,6 +12,7 @@ namespace P8_Administrador_de_tareas.MVVM.ViewModel
 {
     class TareasVM
     {
+        private ObservableCollection<Tarea> listaTareas;
         public TareasVM()
         {
             this.ListaCategorias= new ObservableCollection<Categoria>() {
@@ -19,33 +20,31 @@ namespace P8_Administrador_de_tareas.MVVM.ViewModel
                 new Categoria("Categoria 2", new ObservableCollection<Tarea>() { new Tarea("Tarea 2")}) ,
 
             };
+            obtenerListaTareas();
         }
-        [AlsoNotifyFor("ListaTareas")]
+        
         public ObservableCollection<Categoria> ListaCategorias { get; set; }
 
 
-        public ObservableCollection<Tarea> ListaTareas { get {
-                ObservableCollection<Tarea> listaTarea = new ObservableCollection<Tarea>();
-                foreach (var cat in ListaCategorias)
-                {
-                    foreach (var item in cat.ListaTareas)
-                    {
-                        listaTarea.Add(item);
-                    }
-                }
+        public ObservableCollection<Tarea> ListaTareas {
+            get { return listaTareas; }
 
-                return listaTarea; 
-            } set {
-                ObservableCollection<Tarea> listaTarea = new ObservableCollection<Tarea>();
-                foreach (var cat in ListaCategorias)
-                {
-                    foreach (var item in cat.ListaTareas)
-                    {
-                        listaTarea.Add(item);
-                    }
-                }
-                this.ListaTareas = listaTarea;
+            set {
+                this.listaTareas= value;
             } }
+
+        private void obtenerListaTareas()
+        {
+            ObservableCollection<Tarea> listaTarea = new ObservableCollection<Tarea>();
+            foreach (var cat in ListaCategorias)
+            {
+                foreach (var item in cat.ListaTareas)
+                {
+                    listaTarea.Add(item);
+                }
+            }
+            this.ListaTareas = listaTarea;
+        }
 
         
     }

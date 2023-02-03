@@ -22,7 +22,9 @@
 
     <DataTemplate x:Key="TemplateTarea">
         <HorizontalStackLayout Padding="10">
-            <CheckBox IsChecked="{Binding Completada}" VerticalOptions="Center"/>
+            <CheckBox IsChecked="{Binding Completada}" VerticalOptions="Center" />
+
+
             <Label Text="{Binding TextTarea}" VerticalOptions="Center"/>
         </HorizontalStackLayout>
     </DataTemplate>
