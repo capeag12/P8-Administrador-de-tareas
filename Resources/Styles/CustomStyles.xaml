@@ -12,7 +12,7 @@
                 <VerticalStackLayout>
                     <Label Text="{Binding TareasRestantes, StringFormat='{0} Tareas'}" TextColor="Grey"/>
                     <Label HorizontalOptions="StartAndExpand" Text="{Binding NombreCategoria}" FontSize="20" FontAttributes="Bold"/>
-                    <ProgressBar IsEnabled="False" Progress="{Binding PorcentajeCompletado}" ProgressColor="Orange"></ProgressBar>
+                    <ProgressBar IsEnabled="False" Progress="{Binding PorcentajeCompletadas}" ProgressColor="Orange"></ProgressBar>
                 </VerticalStackLayout>
             </Grid>
         </Border>
@@ -23,8 +23,6 @@
     <DataTemplate x:Key="TemplateTarea">
         <HorizontalStackLayout Padding="10">
             <CheckBox IsChecked="{Binding Completada}" VerticalOptions="Center" />
-
-
             <Label Text="{Binding TextTarea}" VerticalOptions="Center"/>
         </HorizontalStackLayout>
     </DataTemplate>

@@ -12,7 +12,12 @@ public partial class ViewTareas : ContentPage
 		InitializeComponent();
 		this.tareasVM = new TareasVM();
 		BindingContext= this.tareasVM;
+
 		
 	}
 
+    private void CheckBox_CheckedChanged(object sender, CheckedChangedEventArgs e)
+    {
+		tareasVM.SetearTareasTotales();
+    }
 }
