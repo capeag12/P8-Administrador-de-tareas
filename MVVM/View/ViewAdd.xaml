@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="P8_Administrador_de_tareas.MVVM.View.ViewAdd"
+             Title="Añadir tarea"
+             >
+    <Grid RowDefinitions=".1*, .1*,.6*,.2*"  >
+        <Entry Placeholder="Añadir tarea" HorizontalOptions="Fill" HorizontalTextAlignment="Center" Grid.Row="1" />
+        <CollectionView Grid.Row="2" ItemsSource="{Binding ListaCategorias}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame>
+                        <HorizontalStackLayout>
+                            <RadioButton GroupName="categoria" Value="{Binding ID}" Content="{Binding NombreCategoria}" ></RadioButton>
+                        </HorizontalStackLayout>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Vertical"></LinearItemsLayout>
+            </CollectionView.ItemsLayout>
+        </CollectionView>
+        <HorizontalStackLayout Grid.Row="3" HorizontalOptions="Center" Spacing="20">
+            <Button Text="Añadir tarea" VerticalOptions="Center"/>
+            <Button Text="Añadir categoria" VerticalOptions="Center"/>
+        </HorizontalStackLayout>
+    </Grid>
+    
+</ContentPage>

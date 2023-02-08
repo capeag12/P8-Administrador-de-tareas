@@ -8,6 +8,6 @@ public partial class App : Application
 	{
 		InitializeComponent();
 
-		MainPage = new ViewTareas();
+		MainPage = new NavigationPage(new ViewTareas());
 	}
 }

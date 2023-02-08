@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace P8_Administrador_de_tareas.MVVM.Modelo
 {
     [AddINotifyPropertyChangedInterface]
-    class Categoria
+    public class Categoria
     {
         private int id;
         private static int idAuto=1;

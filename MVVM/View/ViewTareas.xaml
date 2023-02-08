@@ -30,7 +30,7 @@
                 <Label Margin="10,0,0,0" HorizontalOptions="Start" Text="Categorias" FontSize="Subtitle"/>
             </CollectionView.Header>
         </CollectionView>
-        <Button Grid.Row="2" Margin="25" CornerRadius="60" HeightRequest="40" WidthRequest="40" HorizontalOptions="End" Text="+" VerticalOptions="End" FontAttributes="Bold"></Button>
+        <Button Grid.Row="2" Margin="25" CornerRadius="60" HeightRequest="40" WidthRequest="40" HorizontalOptions="End" Text="+" VerticalOptions="End" FontAttributes="Bold" Clicked="Button_Clicked"></Button>
     </Grid>
     
 </ContentPage>
