@@ -14,4 +14,6 @@ public partial class ViewAdd : ContentPage
         this.añadirVM = new AddVM(listaCategorias,listaTareas);
         BindingContext = añadirVM;
     }
+
+    
 }

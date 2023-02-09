@@ -11,22 +11,26 @@ using System.Windows.Input;
 
 namespace P8_Administrador_de_tareas.MVVM.ViewModel
 {
+    [AddINotifyPropertyChangedInterface]
     class TareasVM
     {
 
-        public ObservableCollection<Categoria> ListaCategorias { get; set; }
-        public ObservableCollection<Tarea> ListaTareas { get; set; }
+        private ObservableCollection<Categoria> listaCategorias;
+        private ObservableCollection<Tarea> listaTareas;
+
+        public ObservableCollection<Categoria> ListaCategorias { get { return this.listaCategorias; } set { this.listaCategorias = value; SetearTareasTotales(); } }
+        public ObservableCollection<Tarea> ListaTareas { get { return this.listaTareas; } set { this.listaTareas = value; SetearTareasTotales(); } }
 
 
         public TareasVM()
         {
-            this.ListaCategorias= new ObservableCollection<Categoria>() { 
-                new Categoria("Categoria 2"),
+            this.listaCategorias= new ObservableCollection<Categoria>() { 
+                new Categoria("Categoria 1"),
                 new Categoria("Categoria 2")
 
             };
 
-            this.ListaTareas = new ObservableCollection<Tarea>()
+            this.listaTareas = new ObservableCollection<Tarea>()
             {
                 new Tarea("Tarea1",1),
                 new Tarea("Tarea2",2),

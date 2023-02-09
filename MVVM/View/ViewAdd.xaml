@@ -4,15 +4,14 @@
              x:Class="P8_Administrador_de_tareas.MVVM.View.ViewAdd"
              Title="Añadir tarea"
              >
-    <Grid RowDefinitions=".1*, .1*,.6*,.2*"  >
-        <Entry Placeholder="Añadir tarea" HorizontalOptions="Fill" HorizontalTextAlignment="Center" Grid.Row="1" />
+    <Grid RowDefinitions=".1*, .1*,.6*,.2*" RadioButtonGroup.GroupName="categoria" RadioButtonGroup.SelectedValue="{Binding IdSel}"> 
+        
+        <Entry Placeholder="Añadir tarea" HorizontalOptions="Fill" HorizontalTextAlignment="Center" Grid.Row="1" Text="{Binding NombreNuevaTarea}" />
         <CollectionView Grid.Row="2" ItemsSource="{Binding ListaCategorias}">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <Frame>
-                        <HorizontalStackLayout>
-                            <RadioButton GroupName="categoria" Value="{Binding ID}" Content="{Binding NombreCategoria}" ></RadioButton>
-                        </HorizontalStackLayout>
+                        <RadioButton GroupName="categoria" Value="{Binding ID}" Content="{Binding NombreCategoria}" ></RadioButton>
                     </Frame>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
@@ -21,7 +20,7 @@
             </CollectionView.ItemsLayout>
         </CollectionView>
         <HorizontalStackLayout Grid.Row="3" HorizontalOptions="Center" Spacing="20">
-            <Button Text="Añadir tarea" VerticalOptions="Center"/>
+            <Button Text="Añadir tarea" VerticalOptions="Center" Command="{Binding AddTareasCommand}"/>
             <Button Text="Añadir categoria" VerticalOptions="Center"/>
         </HorizontalStackLayout>
     </Grid>

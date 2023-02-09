@@ -25,4 +25,11 @@ public partial class ViewTareas : ContentPage
     {
 		Navigation.PushAsync(new ViewAdd(tareasVM.ListaCategorias,tareasVM.ListaTareas));
     }
+
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+		this.tareasVM.SetearTareasTotales();
+
+    }
 }

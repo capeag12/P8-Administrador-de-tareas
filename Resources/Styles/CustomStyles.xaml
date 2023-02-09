@@ -3,6 +3,13 @@
 <ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              >
+
+    <EllipseGeometry
+        x:Key="circle"
+        Center="50,50"
+        RadiusX="30"
+        RadiusY="30"
+        />
     <DataTemplate x:Key="TemplateCat">
         <Border Margin="20,0,0,0" StrokeThickness="1">
             <Border.StrokeShape >
