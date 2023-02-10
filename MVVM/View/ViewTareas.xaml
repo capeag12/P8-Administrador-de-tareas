@@ -17,9 +17,19 @@
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <HorizontalStackLayout Padding="10">
-                        <CheckBox IsChecked="{Binding Completada}" VerticalOptions="Center" CheckedChanged="CheckBox_CheckedChanged" />
-                        <Label Text="{Binding TextTarea}" VerticalOptions="Center"/>
-                        
+                        <CheckBox IsChecked="{Binding Completada}" VerticalOptions="Center" CheckedChanged="CheckBox_CheckedChanged" x:Name="checkBox" />
+                        <Label Text="{Binding TextTarea}" VerticalOptions="Center">
+                            <Label.Triggers>
+                                <DataTrigger
+                                            Binding="{Binding Source={x:Reference checkBox}, Path=IsChecked}"
+                                            TargetType="Label"
+                                            Value="True">
+                                    <Setter Property="TextDecorations" Value="Strikethrough" />
+                                </DataTrigger>
+                            </Label.Triggers>
+
+                        </Label>
+
                     </HorizontalStackLayout>
                 </DataTemplate>
             </CollectionView.ItemTemplate>

@@ -22,6 +22,8 @@ namespace P8_Administrador_de_tareas.MVVM.ViewModel
 
         public ICommand AddTareasCommand { get; set; }
 
+        public ICommand AddCategoriaCommand { get; set; }
+
         public AddVM(ObservableCollection<Categoria> listaCategorias, ObservableCollection<Tarea> listaTareas)
         {
             
@@ -32,6 +34,12 @@ namespace P8_Administrador_de_tareas.MVVM.ViewModel
                 var id = IdSel;
                 this.ListaTareas.Add(new Tarea(nombre, id));
                 this.NombreNuevaTarea = "";
+            });
+
+            this.AddCategoriaCommand = new Command(async () => {
+                string resultado =await App.Current.MainPage.DisplayPromptAsync("Añadir categoria", "", "Aceptar", "Cancelar");
+                listaCategorias.Add(new Categoria(resultado));
+                Console.WriteLine();
             });
             
         }

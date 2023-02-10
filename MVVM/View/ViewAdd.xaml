@@ -21,7 +21,7 @@
         </CollectionView>
         <HorizontalStackLayout Grid.Row="3" HorizontalOptions="Center" Spacing="20">
             <Button Text="Añadir tarea" VerticalOptions="Center" Command="{Binding AddTareasCommand}"/>
-            <Button Text="Añadir categoria" VerticalOptions="Center"/>
+            <Button Text="Añadir categoria" VerticalOptions="Center" Command="{Binding AddCategoriaCommand}"/>
         </HorizontalStackLayout>
     </Grid>
     
